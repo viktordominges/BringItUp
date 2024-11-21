@@ -1,9 +1,8 @@
-export default class Slider {
-    constructor(page, btns) {
-        this.page = document.querySelector(page);
-        this.slides = Array.from(this.page.children); // Преобразуем в массив;  this.slides является HTMLCollection, а не массивом, поэтому метод forEach не работает.
-        this.btns = document.querySelectorAll(btns);
-        this.slideIndex = 1;
+import Slider from "./slider";
+
+export default class MainSlider extends Slider {
+    constructor(btns) {
+        super(btns);
     }
 
     showSlides(n) {
@@ -29,7 +28,7 @@ export default class Slider {
             }
         } catch (e) {}
         
-        this.slides.forEach(slide => {
+        [...this.slides].forEach(slide => {
             slide.style.display = 'none';
         });
 
